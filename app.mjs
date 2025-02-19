@@ -1,11 +1,16 @@
  import express from "express"
 const app = express()
 const port = process.env.PORT ||  3000
+import path from "path"
+
+
+const __dirname = path.resolve()
+app.use('/', express.static(path.join(__dirname, './web/dist')))
+
 
 app.get('/', (req, res) => {
-  res.send('Hello server')
+  res.send("get  chlrha ha")
 })
-
 
 app.get('/weather', (req, res) => {
   res.json({ user: 'tobi' })
@@ -16,6 +21,7 @@ app.get('/weather/:cityName', (req, res) => {
 app.get('/weather/:cityName/:side', (req, res) => {
   res.send(req.params)
 })
+
 
 
 
